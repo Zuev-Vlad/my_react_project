@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { setIsOpenPopap } from '../../redux/action/action'
+import { setIsOpenPopap, setTitlePopap } from '../../redux/action/action'
 
 
 
@@ -10,7 +10,8 @@ const Popap = ({
     content = '',
     onSave = () => false,
     onClose = () => false,
-    setIsOpenPopap
+    setIsOpenPopap,
+    setTitlePopap
 }) => {
     return (
         <React.Fragment>
@@ -31,8 +32,8 @@ const Popap = ({
                         {content}
                     </div>
                     <div className="modal-footer">
-                      <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                      <button type="button" className="btn btn-primary">Save changes</button>
+                      <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={() => setIsOpenPopap(false)} >Закрыть</button>
+                      <button type="button" className="btn btn-primary" onClick={() => setTitlePopap('On Save SUCCESS!')}>Сохранить</button>
                     </div>
                   </div>
                 </div>
@@ -49,7 +50,8 @@ const mapStateToProps = state => {
 } 
 
 const mapDispatchToProps = {
-    setIsOpenPopap
+    setIsOpenPopap,
+    setTitlePopap
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Popap) 
