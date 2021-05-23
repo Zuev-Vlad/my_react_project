@@ -15,4 +15,10 @@ export const MENU_ARRAY = [{
         title: 'Информация',
         href: '/info'
     },
+    {
+        id: 3,
+        childrenList: [],
+        title: 'Канвас',
+        href: '/canvas'
+    },
 ]

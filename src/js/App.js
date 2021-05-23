@@ -10,9 +10,22 @@ import {
     BrowserRouter
   } from "react-router-dom"
 import SiteHeader from './Components/SiteHeader/SiteHeader';
+import { PageCanvas } from './Pages/PageCanvas/PageCanvas';
+import { compose, createStore } from 'redux';
+import { rootReducer } from './redux/rootReducer';
+import { Provider } from 'react-redux';
+import Popap from './Components/Popap/Popap';
+
+
+
+const Store = createStore(rootReducer, compose(
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+))
+
 
 const App = () => {
     return (
+        <Provider store={Store}>
         <BrowserRouter>
         <Header >
             <div className="container">
@@ -30,6 +43,9 @@ const App = () => {
                 <Route history={history} path='/info'> 
                     info
                 </Route>
+                <Route history={history} path='/canvas'> 
+                    <PageCanvas/>
+                </Route>
             </Switch>
         
         </SiteBody>
@@ -39,6 +55,8 @@ const App = () => {
             </div>
         </Footer>
         </BrowserRouter> 
+        <Popap/>
+        </Provider>
     )
 }
 

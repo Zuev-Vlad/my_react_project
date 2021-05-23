@@ -1,0 +1,1 @@
+export const SET_IS_OPEN_POPAP = 'SET_IS_OPEN_POPAP'
